@@ -14,7 +14,6 @@ except ImportError:
 
 import json  # only used for urlencode querystr
 import logging
-import streql
 import requests
 
 from bigcommerce.exception import *
