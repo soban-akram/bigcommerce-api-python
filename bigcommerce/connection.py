@@ -210,7 +210,6 @@ class OAuthConnection(Connection):
         """
         encoded_json, encoded_hmac = signed_payload.split('.')
         dc_json = base64.b64decode(encoded_json)
-        signature = base64.b64decode(encoded_hmac)
         expected_sig = hmac.new(client_secret.encode(), base64.b64decode(encoded_json), hashlib.sha256).hexdigest()
         authorised = streql.equals(signature, expected_sig)
         return json.loads(dc_json.decode()) if authorised else False
